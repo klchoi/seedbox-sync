@@ -5,6 +5,15 @@ RCLONE_CONF=$HOME/.rclone.conf
 RCLONE_LOG=$HOME/gsync.log
 RCLONE_LOCAL_DIR=$HOME/drive/
 RCLONE_REMOTE_DIR=gdrive:/
+RCLONE_LOCK=$HOME/gsync.lock
+
+if [ -f $RCLONE_LOCK ]; then
+    echo SYNCING...
+    exit 1
+fi
+
+touch $RCLONE_LOCK
+trap "rm $RCLONE_LOCK" EXIT
 
 $RCLONE_BIN \
     --config $RCLONE_CONF \
