@@ -1,5 +1,8 @@
 function sync -a cmd
   switch $cmd
+    case stop
+      pkill -P (cat ~/gsync.lock)
+      pkill --pidfile ~gsync.lock
     case copy
       rclone \
         --log-level INFO \
