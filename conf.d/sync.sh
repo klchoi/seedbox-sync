@@ -30,6 +30,7 @@ $RCLONE_BIN \
     --exclude='**.mp4' \
     --exclude='**.wmv' \
     --exclude='**.mov' \
+    --exclude='**.m4v' \
     --exclude='**.avi' \
     --exclude='**.mkv' \
     --exclude='**.flv' \
