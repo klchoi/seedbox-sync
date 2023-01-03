@@ -18,6 +18,7 @@ trap "rm $RCLONE_LOCK" EXIT
 $RCLONE_BIN \
     --config $RCLONE_CONF \
     --log-level INFO \
+    --log-file $RCLONE_LOG \
     move \
     --delete-empty-src-dirs \
     --drive-stop-on-upload-limit \
@@ -38,10 +39,11 @@ $RCLONE_BIN \
     --transfers=8 \
     $RCLONE_LOCAL_DIR \
     $RCLONE_REMOTE_DIR \
-    2>&1 | tee $RCLONE_LOG && \
+    2>&1 && \
 $RCLONE_BIN \
     --config $RCLONE_CONF \
     --log-level INFO \
+    --log-file $RCLONE_LOG \
     move \
     --delete-empty-src-dirs \
     --drive-stop-on-upload-limit \
@@ -54,4 +56,4 @@ $RCLONE_BIN \
     --transfers=1 \
     $RCLONE_LOCAL_DIR \
     $RCLONE_REMOTE_DIR \
-    2>&1 | tee $RCLONE_LOG
+    2>&1
