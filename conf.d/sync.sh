@@ -12,7 +12,7 @@ if [ -f $RCLONE_LOCK ]; then
     exit 1
 fi
 
-touch $RCLONE_LOCK
+echo $$ > $RCLONE_LOCK
 trap "rm $RCLONE_LOCK" EXIT
 
 $RCLONE_BIN \
